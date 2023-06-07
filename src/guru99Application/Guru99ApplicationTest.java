@@ -12,15 +12,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
-
 public class Guru99ApplicationTest {
 	WebDriver driver;
 	String url = "http://demo.guru99.com/v4/";
 	
 	@AfterClass
 	public void closeBrowser() {
-//	driver.close();  //  closes only the current window and WebDriver session remains active. 
 		 driver.quit(); // method closes all browser windows and ends the WebDriver session. 
 	}
 
@@ -44,7 +41,6 @@ public class Guru99ApplicationTest {
 
 	@Test (priority = 2)
 	public void verifyLoginToGuru99Application() {
-
 		WebElement userId = driver.findElement(By.name("uid"));
 		WebElement userPassword = driver.findElement(By.name("password"));
 		WebElement loginButton = driver.findElement(By.name("btnLogin"));
@@ -62,7 +58,7 @@ public class Guru99ApplicationTest {
 	
 	@Test
 	public void acceptPrivacyPolicy() {
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		WebElement saveButton = driver.findElement(By.id("save"));
 		saveButton.click();
 	}
@@ -100,12 +96,12 @@ public class Guru99ApplicationTest {
 		
 
 	
-//	@Test (priority = 3)
-//	public void verifyLogOutButton() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//		WebElement logoutButton = driver.findElement(By.xpath("//a[contains(@href,'Logout.php')]")); 
+	@Test (priority = 3)
+	public void verifyLogOutButton() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement logoutButton = driver.findElement(By.xpath("//a[contains(@href,'Logout.php')]")); 
 		
-//		logoutButton.click();
-//	}
+		logoutButton.click();
+	}
 	
 }
